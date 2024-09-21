@@ -8,13 +8,14 @@ class BinaryIntSearchTreeTest {
 
     @Test
     void add() {
-        BinaryIntSearchTree tree = new BinaryIntSearchTree();
+        HomeWork tree = new HomeWork();
 
         tree.add(5);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             tree.add(i);
         }
-        tree.add(10);
+        tree.add(5);
+        System.out.println(tree.findMaxDigits(3, 4));
     }
 }

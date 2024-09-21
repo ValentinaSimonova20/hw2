@@ -1,6 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 
 public class HomeWork extends BinaryIntSearchTree {
@@ -23,9 +25,26 @@ public class HomeWork extends BinaryIntSearchTree {
      * Сигнатуру метода не меняем
      */
     public List<Integer> findMaxDigits(int count, int upperBound) {
-        //TODO реализовать метод
-        return null;
+        List<Integer> list = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.empty() && count != 0) {
+            Node current = stack.pop();
+            if(current.value <= upperBound) {
+                if(current.right != null && current.right.value <= upperBound && !list.contains(current.right.value)) {
+                    stack.push(current);
+                    stack.push(current.right);
+                } else {
+                    list.add(current.value);
+                    count--;
+                }
+            } else {
+                if(current.left != null) {
+                    stack.push(current.left);
+                }
+            }
+        }
+        return list;
     }
-
 
 }
